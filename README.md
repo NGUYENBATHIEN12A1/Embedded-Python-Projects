@@ -62,6 +62,16 @@ Xây dựng hệ thống giám sát nhiệt độ và độ ẩm realtime sử d
   * Tự động cập nhật dữ liệu mỗi 5 giây.
 * **Kiến thức sử dụng:** `ESP8266`, `DHT11`, `Wi-Fi`, `HTTP`, `Socket`, `JSON`, `HTML/CSS`, `JavaScript`, `Chart.js`.
 
+### Lab 6: ESP32 OpenWeatherMap Station
+Xây dựng trạm thời tiết thông minh trên ESP32, cho phép tra cứu trạng thái thời tiết của nhiều thành phố trên thế giới thông qua giao diện Web.
+* **Chức năng chính:**
+  * Kết nối ESP32 với Wi-Fi mạng cục bộ.
+  * Xây dựng giao diện Web Server bằng HTML/CSS với Form Dropdown cho phép chọn các thành phố (Huế, Hà Nội, TP.HCM, Tokyo, London, New York).
+  * Gửi HTTP GET Request đến OpenWeatherMap API để lấy thông tin thời tiết (Nhiệt độ, Nhiệt độ cảm nhận, Độ ẩm, Sức gió, Mô tả thời tiết).
+  * Parse (phân tích) dữ liệu JSON trả về từ API và hiển thị trực quan lên Web.
+  * Tối ưu hóa và giải phóng bộ nhớ RAM liên tục cho ESP32 bằng thư viện `gc` (Garbage Collector) để tránh treo thiết bị.
+* **Kiến thức sử dụng:** `ESP32`, `Wi-Fi`, `Socket`, `REST API`, `JSON`, `urequests`, `Garbage Collection (gc)`, `HTML/CSS`.
+
 ---
 
 ## 🛠️ Technologies (Công nghệ & Thiết bị)
