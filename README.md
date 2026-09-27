@@ -104,4 +104,7 @@ Ex_Embedded-_Python/
 ├── Lab5/
 │   └── ESP8266_DHT11/
 │
+├── Lab6/
+│   └── ESP32_OpenWeatherMap/
+|
 └── README.md
