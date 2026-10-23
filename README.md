@@ -47,7 +47,7 @@
 
 ### Lab 1 — Python cơ bản & OOP
 
-> 📄 [`Lab1.py`](Lab1.py)
+> 📁 [`Lab1/`](Lab1) · 📄 [`lab1.py`](Lab1/lab1.py)
 
 Bài toán **quản lý sinh viên** (nhập thông tin, xếp loại theo GPA, thống kê, tìm kiếm theo mã SV) được giải theo 2 cách:
 
@@ -62,7 +62,7 @@ Bài toán **quản lý sinh viên** (nhập thông tin, xếp loại theo GPA, 
 
 ### Lab 2 — LED Matrix 8x8
 
-> 📄 [`Lab2.py`](Lab2.py)
+> 📁 [`Lab2/`](Lab2) · 📄 [`lab2.py`](Lab2/lab2.py)
 
 Điều khiển LED Matrix 8x8 (IC **MAX7219**) bằng MicroPython qua giao tiếp **Hardware SPI**.
 
@@ -81,7 +81,7 @@ Bài toán **quản lý sinh viên** (nhập thông tin, xếp loại theo GPA, 
 
 ### Lab 3 — Interrupt, Timer, PWM & RGB LED
 
-> 📄 [`Lab3.py`](Lab3.py)
+> 📁 [`Lab3/`](Lab3) · 📄 [`lab3.py`](Lab3/lab3.py)
 
 Dùng nút nhấn (ngắt cạnh xuống) để chuyển giữa 3 chế độ:
 
@@ -301,9 +301,12 @@ API_KEY = "YOUR_OPENWEATHERMAP_API_KEY"  # Lab 6 — lấy tại openweathermap.
 
 ```text
 Embedded-Python-Projects/
-├── Lab1.py              # OOP
-├── Lab2.py              # LED Matrix 8x8 (MAX7219)
-├── Lab3.py              # Interrupt · Timer · PWM · RGB LED
+├── Lab1/                # Python cơ bản & OOP
+│   └── lab1.py
+├── Lab2/                # LED Matrix 8x8 (MAX7219)
+│   └── lab2.py
+├── Lab3/                # Interrupt · Timer · PWM · RGB LED
+│   └── lab3.py
 ├── Lab4/                # HTTP Client & Web Server
 │   ├── lab41.py         #   HTTP GET / POST
 │   ├── lab42.py         #   Web Server điều khiển LED
