@@ -4,8 +4,8 @@ import urequests #HTTP
 import time
 from machine import Pin
 
-SSID = "Xom nha la"
-PASSWORD = "hoivuongdi"
+SSID = "YOUR_WIFI_SSID"
+PASSWORD = "YOUR_WIFI_PASSWORD"
 
 # Cấu hình thiết bị
 led = Pin(2, Pin.OUT)

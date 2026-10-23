@@ -19,11 +19,11 @@ import gc
 gc.collect()
 
 # Điền thông tin mạng Wi-Fi của bạn
-ssid = 'Xom nha la'
-password = 'hoivuongdi'
+ssid = 'YOUR_WIFI_SSID'
+password = 'YOUR_WIFI_PASSWORD'
 
 # Thông tin cấu hình API
-API_KEY = "8dc336c68d99b90a4d1dea3bb456a7d9"
+API_KEY = "YOUR_OPENWEATHERMAP_API_KEY"
 API_URL = "http://api.openweathermap.org/data/2.5/weather"
 
 CITIES = {

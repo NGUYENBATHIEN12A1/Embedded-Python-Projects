@@ -11,8 +11,8 @@ gc.collect()
 
 # ================= 1. CẤU HÌNH WIFI =================
 # Thay đổi SSID và Mật khẩu WiFi của bạn tại đây
-SSID = 'Xom nha la'
-PASSWORD = 'hoivuongdi'
+SSID = 'YOUR_WIFI_SSID'
+PASSWORD = 'YOUR_WIFI_PASSWORD'
 
 # Kết nối WiFi
 station = network.WLAN(network.STA_IF)

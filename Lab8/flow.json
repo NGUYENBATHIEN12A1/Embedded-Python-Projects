@@ -1,0 +1,422 @@
+[
+    {
+        "id": "lab8flow00000001",
+        "type": "tab",
+        "label": "Lab 8 - ESP32",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "lab8mqttin000003",
+        "type": "mqtt in",
+        "z": "lab8flow00000001",
+        "name": "",
+        "topic": "status",
+        "qos": "1",
+        "datatype": "utf8",
+        "broker": "lab8broker000001",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 130,
+        "y": 60,
+        "wires": [
+            [
+                "lab8func00000001"
+            ]
+        ]
+    },
+    {
+        "id": "lab8func00000001",
+        "type": "function",
+        "z": "lab8flow00000001",
+        "name": "thoi diem",
+        "func": "msg.time = new Date().toLocaleString('vi-VN');\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 300,
+        "y": 60,
+        "wires": [
+            [
+                "lab8tplstatus001"
+            ]
+        ]
+    },
+    {
+        "id": "lab8tplstatus001",
+        "type": "ui_template",
+        "z": "lab8flow00000001",
+        "group": "lab8group0000001",
+        "name": "Status",
+        "order": 1,
+        "width": 3,
+        "height": 3,
+        "format": "<div class=\"st\">\n  <div class=\"st-title\">Status</div>\n  <div class=\"st-row\">\n    <span class=\"st-dot\" ng-class=\"msg.payload === 'online' ? 'on' : 'off'\"></span>\n    <span class=\"st-text\">{{ msg.payload === 'online' ? 'ONLINE' : 'OFFLINE' }}</span>\n  </div>\n  <div class=\"st-time\" ng-if=\"msg.time\">{{ msg.time }}</div>\n</div>\n<style>\n  .st { display:flex; flex-direction:column; align-items:center; justify-content:center; height:100%; gap:6px; }\n  .st-title { font-size:14px; opacity:.8; }\n  .st-row { display:flex; align-items:center; gap:8px; }\n  .st-dot { width:18px; height:18px; border-radius:50%; }\n  .st-dot.on { background:#2ecc71; box-shadow:0 0 8px #2ecc71; }\n  .st-dot.off { background:#e74c3c; }\n  .st-text { font-size:22px; font-weight:bold; }\n  .st-time { font-size:11px; opacity:.6; text-align:center; }\n</style>",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "className": "",
+        "x": 470,
+        "y": 60,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "lab8mqttin000001",
+        "type": "mqtt in",
+        "z": "lab8flow00000001",
+        "name": "",
+        "topic": "temp",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "lab8broker000001",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 130,
+        "y": 140,
+        "wires": [
+            [
+                "lab8gaugetemp001",
+                "lab8chgtemp00001"
+            ]
+        ]
+    },
+    {
+        "id": "lab8gaugetemp001",
+        "type": "ui_gauge",
+        "z": "lab8flow00000001",
+        "name": "Temp",
+        "group": "lab8group0000001",
+        "order": 2,
+        "width": 3,
+        "height": 3,
+        "gtype": "gage",
+        "title": "Temp",
+        "label": "°C",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "50",
+        "colors": [
+            "#1e90ff",
+            "#00b500",
+            "#ca3838"
+        ],
+        "seg1": "20",
+        "seg2": "32",
+        "diff": false,
+        "className": "",
+        "x": 470,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "lab8chgtemp00001",
+        "type": "change",
+        "z": "lab8flow00000001",
+        "name": "series Nhiet do",
+        "rules": [
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "Nhiệt độ (°C)",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 320,
+        "y": 160,
+        "wires": [
+            [
+                "lab8chart0000001"
+            ]
+        ]
+    },
+    {
+        "id": "lab8mqttin000002",
+        "type": "mqtt in",
+        "z": "lab8flow00000001",
+        "name": "",
+        "topic": "humidity",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "lab8broker000001",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 140,
+        "y": 220,
+        "wires": [
+            [
+                "lab8gaugehum0001",
+                "lab8chghum000001"
+            ]
+        ]
+    },
+    {
+        "id": "lab8gaugehum0001",
+        "type": "ui_gauge",
+        "z": "lab8flow00000001",
+        "name": "Hum",
+        "group": "lab8group0000001",
+        "order": 3,
+        "width": 3,
+        "height": 3,
+        "gtype": "gage",
+        "title": "Hum",
+        "label": "%",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "100",
+        "colors": [
+            "#ca3838",
+            "#00b500",
+            "#1e90ff"
+        ],
+        "seg1": "30",
+        "seg2": "70",
+        "diff": false,
+        "className": "",
+        "x": 470,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "lab8chghum000001",
+        "type": "change",
+        "z": "lab8flow00000001",
+        "name": "series Do am",
+        "rules": [
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "Độ ẩm (%)",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 320,
+        "y": 240,
+        "wires": [
+            [
+                "lab8chart0000001"
+            ]
+        ]
+    },
+    {
+        "id": "lab8chart0000001",
+        "type": "ui_chart",
+        "z": "lab8flow00000001",
+        "name": "Line chart",
+        "group": "lab8group0000002",
+        "order": 1,
+        "width": 8,
+        "height": 6,
+        "label": "Nhiệt độ & Độ ẩm",
+        "chartType": "line",
+        "legend": "true",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "Chờ dữ liệu từ ESP32...",
+        "dot": false,
+        "ymin": "0",
+        "ymax": "100",
+        "removeOlder": "1",
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#d62728",
+            "#1f77b4",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#aec7e8",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 510,
+        "y": 260,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "lab8switch000001",
+        "type": "ui_switch",
+        "z": "lab8flow00000001",
+        "name": "SW",
+        "label": "SW - LED",
+        "tooltip": "Bật/tắt LED onboard",
+        "group": "lab8group0000001",
+        "order": 4,
+        "width": 3,
+        "height": 1,
+        "passthru": true,
+        "decouple": "false",
+        "topic": "",
+        "topicType": "str",
+        "style": "",
+        "onvalue": "on",
+        "onvalueType": "str",
+        "onicon": "",
+        "oncolor": "",
+        "offvalue": "off",
+        "offvalueType": "str",
+        "officon": "",
+        "offcolor": "",
+        "animate": true,
+        "className": "",
+        "x": 130,
+        "y": 320,
+        "wires": [
+            [
+                "lab8mqttout00001"
+            ]
+        ]
+    },
+    {
+        "id": "lab8mqttout00001",
+        "type": "mqtt out",
+        "z": "lab8flow00000001",
+        "name": "",
+        "topic": "output",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "lab8broker000001",
+        "x": 320,
+        "y": 320,
+        "wires": []
+    },
+    {
+        "id": "lab8mqttin000004",
+        "type": "mqtt in",
+        "z": "lab8flow00000001",
+        "name": "",
+        "topic": "info",
+        "qos": "1",
+        "datatype": "json",
+        "broker": "lab8broker000001",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 130,
+        "y": 400,
+        "wires": [
+            [
+                "lab8tplinfo00001",
+                "lab8debug0000001"
+            ]
+        ]
+    },
+    {
+        "id": "lab8tplinfo00001",
+        "type": "ui_template",
+        "z": "lab8flow00000001",
+        "group": "lab8group0000002",
+        "name": "Thong tin ESP32",
+        "order": 2,
+        "width": 4,
+        "height": 6,
+        "format": "<div class=\"info\" ng-if=\"msg.payload\">\n  <div><span>Tên</span><b>{{ msg.payload.name }}</b></div>\n  <div><span>IP</span><b>{{ msg.payload.ip }}</b></div>\n  <div><span>MAC</span><b>{{ msg.payload.mac }}</b></div>\n  <div><span>Broker</span><b>{{ msg.payload.broker }}</b></div>\n  <div><span>Client ID</span><b>{{ msg.payload.client_id }}</b></div>\n  <div><span>Cảm biến</span><b>{{ msg.payload.sensor }}</b></div>\n</div>\n<div class=\"info-empty\" ng-if=\"!msg.payload\">Chưa nhận được thông tin từ ESP32</div>\n<style>\n  .info div { display:flex; justify-content:space-between; gap:8px; padding:6px 0; border-bottom:1px solid rgba(128,128,128,.25); }\n  .info span { opacity:.7; }\n  .info b { text-align:right; word-break:break-all; }\n  .info-empty { opacity:.6; padding-top:12px; }\n</style>",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "className": "",
+        "x": 340,
+        "y": 400,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "lab8debug0000001",
+        "type": "debug",
+        "z": "lab8flow00000001",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "x": 330,
+        "y": 460,
+        "wires": []
+    },
+    {
+        "id": "lab8broker000001",
+        "type": "mqtt-broker",
+        "name": "Mosquitto",
+        "broker": "localhost",
+        "port": "1883",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "autoUnsubscribe": true
+    },
+    {
+        "id": "lab8group0000001",
+        "type": "ui_group",
+        "name": "Tổng quan",
+        "tab": "lab8uitab0000001",
+        "order": 1,
+        "disp": true,
+        "width": "12",
+        "collapse": false
+    },
+    {
+        "id": "lab8group0000002",
+        "type": "ui_group",
+        "name": "Line chart & Thông tin ESP32",
+        "tab": "lab8uitab0000001",
+        "order": 2,
+        "disp": true,
+        "width": "12",
+        "collapse": false
+    },
+    {
+        "id": "lab8uitab0000001",
+        "type": "ui_tab",
+        "name": "Dashboard",
+        "icon": "dashboard",
+        "order": 1,
+        "disabled": false,
+        "hidden": false
+    }
+]
